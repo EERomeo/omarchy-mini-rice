@@ -1,0 +1,106 @@
+@import "../omarchy/current/theme/waybar.css";
+
+* {
+  background-color: transparent;
+  color: @foreground;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'CaskaydiaMono Nerd Font';
+  font-size: 14px;
+  margin-top: 1px;
+}
+
+.modules-left {
+  background-color: @background;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.modules-right {
+  background-color: @background;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.modules-center {
+  background-color: @background;
+  border-radius: 10px;
+}
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#battery,
+#pulseaudio,
+#custom-omarchy,
+#custom-screenrecording-indicator,
+#custom-update {
+  min-width: 12px;
+  margin: 0 7.5px;
+}
+
+#tray {
+  margin-right: 16px;
+}
+
+#bluetooth {
+  margin-right: 17px;
+}
+
+#network {
+  margin-right: 13px;
+}
+
+#custom-expand-icon {
+  margin-right: 18px;
+}
+
+tooltip {
+  padding: 2px;
+  background-color: @background;
+  opacity: 0.9;
+  border-radius: 10px;
+}
+
+#custom-update {
+  font-size: 10px;
+}
+
+#clock {
+  margin-left: 8.75px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#custom-screenrecording-indicator {
+  min-width: 12px;
+  margin-left: 8.75px;
+  font-size: 10px;
+}
+
+#custom-screenrecording-indicator.active {
+  color: #a55555;
+}
+
+#cpu.low {color: #7FFF00}
+#cpu.medium {color: #FFFF00}
+#cpu.high {color: #FF0000}
+#memory.low {color: #7FFF00}
+#memory.medium {color: #FFFF00}
+#memory.high {color: #FF0000}
+#disk.low {color: #7FFF00}
+#disk.medium {color: #FFFF00}
+#disk.high {color: #FF0000}
+#nvidia.low {color: #7FFF00}
+#nvidia.medium {color: #FFFF00}
+#nvidia.high {color: #FFFF00}

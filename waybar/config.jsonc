@@ -1,0 +1,256 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "spacing": 0,
+  "height": 26,
+  "modules-left": [
+    "custom/omarchy", 
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "clock#calendar", 
+    "custom/update", 
+    "custom/screenrecording-indicator", 
+    "custom/privacydots", 
+    "custom/media"
+  ],
+  "modules-right": [
+    "wlr/taskbar",
+    "cpu",
+    "custom/nvidia",
+    "memory",
+    "disk",
+    "bluetooth",
+    "network",
+    "pulseaudio",
+    "battery"
+  ],
+  "clock#calendar": {
+    "timezone": "Romania/Bucharest",
+    "tooltip-format": "{calendar}",
+    "format": "{:%H:%M %a %d}",
+	  "calendar": {
+		  "weeks-pos": "left",
+		  "on-scroll": 1,
+		  "mode-mon-col": 3,
+      "format": {
+        "months":     "<span color='#ffffff'><b>{}</b></span>",
+        "days":       "<span color='#ffffff'><b>{}</b></span>",
+        "weeks":      "<span color='#f8f8f8'><b>W{}</b></span>",
+        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+        "today":      "<span color='#448844'><b><u>{}</u></b></span>"
+      }
+	  },
+	  "actions":  {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_down",
+      "on-scroll-down": "shift_up"
+    }
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 20,
+    "icon-theme": "Numix-Circle",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": [
+       "Alacritty",
+       "Ghostty"
+    ],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "rewrite": {
+        "Firefox Web Browser": "Firefox",
+        "Foot Server": "Terminal"
+    }
+  },
+  "custom/privacydots": {
+        "exec": "~/.config/scripts/privacydots.sh",
+        "return-type": "json",
+        "interval": 3,
+        "format": "  {text} ",
+        "tooltip": true,
+        "escape": false,
+        "markup": "pango"
+  },
+  "cpu": {
+    "interval": 2,
+    "format": "cpu {usage}% ",
+    "max-length": 10,
+    "states": {
+      "low": 10,
+      "medium": 40,
+      "high": 80
+    }
+  },
+  "disk": {
+    "interval": 30,
+    "format": "| disk {percentage_used}% | ",
+    "path": "/",
+    "states": {
+      "low": 10,
+      "medium": 40,
+      "high": 80
+    }
+  },
+  "memory": {
+    "interval": 2,
+    "format": "| mem {used:0.1f}G ",
+    "on-click-middle": "sudo /sbin/sysctl vm.drop_caches=3",
+    "states": {
+      "low": 5,
+      "medium": 50,
+      "high": 80
+    }
+  },
+  "custom/nvidia": {
+    "exec": "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/\\1% \\2°C/g'",
+    "format": "| gpu {} ",
+    "interval": 2,
+    "states": {
+      "low": 5,
+      "medium": 40,
+      "high": 80
+    }
+  },
+  "custom/media": {
+    "format": "{icon} {text} ",
+    "escape": true,
+    "return-type": "json",
+    "max-length": 50,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl stop",
+    "smooth-scrolling-threshold": 1, // This value was tested using a trackpad, it should be lowered if using a mouse.
+    "on-scroll-up": "playerctl previous",
+    "on-scroll-down": "playerctl next",
+    "exec": "~/.config/scripts/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
+   },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "0",
+      "active": "󱓻"
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    }
+  },
+  "custom/omarchy": {
+    "format": "<span font='omarchy'>\ue901</span>",
+    "on-click": "omarchy-menu",
+    "on-click-right": "xdg-terminal-exec",
+    "tooltip-format": "Omarchy Menu\n\nSuper + Alt + Space"
+  },
+  "custom/update": {
+    "format": "",
+    "exec": "omarchy-update-available",
+    "on-click": "omarchy-launch-floating-terminal-with-presentation omarchy-update",
+    "tooltip-format": "Omarchy update available",
+    "signal": 7,
+    "interval": 21600
+  },
+
+  /*"cpu": {
+    "interval": 5,
+    "format": "󰍛",
+    "on-click": "omarchy-launch-or-focus-tui btop"
+  },*/
+  "clock": {
+    "format": "{:%H:%M %A %d}",
+    "format-alt": "{:L%d %B W%V %Y}",
+    "tooltip": false,
+    "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
+  },
+  "network": {
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{ipaddr}\n{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "spacing": 1,
+    "on-click": "omarchy-launch-wifi"
+  },
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-discharging": "{icon}",
+    "format-charging": "{icon}",
+    "format-plugged": "",
+    "format-icons": {
+      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "format-full": "󰂅",
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "interval": 5,
+    "on-click": "omarchy-menu power",
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-connected": "󰂱",
+    "format-no-controller": "",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "omarchy-launch-bluetooth"
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "on-click": "omarchy-launch-or-focus-tui wiremix",
+    "on-click-right": "pamixer -t",
+    "tooltip-format": "Playing at {volume}%",
+    "scroll-step": 5,
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", ""]
+    }
+  },
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "tray-group-item"
+    },
+    "modules": ["custom/expand-icon", "tray"]
+  },
+  "custom/expand-icon": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/screenrecording-indicator": {
+    "on-click": "omarchy-cmd-screenrecord",
+    "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
+    "signal": 8,
+    "return-type": "json"
+  },
+  "tray": {
+    "icon-size": 12,
+    "spacing": 17
+  }
+}
