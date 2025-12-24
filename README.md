@@ -18,3 +18,5 @@ From: https://github.com/Alexays/Waybar/wiki/Module:-Custom:-Examples
 From: https://github.com/alibaghernejad/waybar-privacy-dots
 
 **rand-wallpaper.sh** will cycle your theme backgrounds every 5 minutes.
+
+omarchy.ttf and omarchy.woff should be placed in ./local/share/fonts replacing existing for the Omarchy logo.
