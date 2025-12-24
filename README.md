@@ -20,3 +20,12 @@ From: https://github.com/alibaghernejad/waybar-privacy-dots
 **rand-wallpaper.sh** will cycle your theme backgrounds every 5 minutes.
 
 omarchy.ttf and omarchy.woff should be placed in ./local/share/fonts replacing existing for the Omarchy logo.
+
+# My themes
+<a href="https://github.com/EERomeo/omarchy-auto-theme">Auto</a></br>
+<a href="https://github.com/EERomeo/omarchy-apocalypse-theme">Apocalypse</a></br>
+<a href="https://github.com/EERomeo/omarchy-digital-theme">Digital</a></br>
+<a href="https://github.com/EERomeo/omarchy-steampunk-theme">Steampunk</a></br>
+
+# My waybar
+<a href="https://github.com/EERomeo/omarchy-mini-rice">Waybar & Scripts</a>
