@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
 
+if [[ `pgrep -f $0` != "$$" ]]; then
+        echo "Another instance already exist! Exiting"
+        exit
+fi
+
 # Wallpaper directory
 WP_FOLDER=~/.config/omarchy/current/theme/backgrounds/
 
